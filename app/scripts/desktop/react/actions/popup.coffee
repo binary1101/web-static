@@ -1,4 +1,7 @@
+Constants        = require '../constants/constants'
+AppDispatcher    = require '../dispatchers/dispatcher'
 CurrentUserStore = require '../stores/current_user'
+DesignSettings   = require '../components/DesignSettings/index'
 
 PopupActions =
 
@@ -7,23 +10,20 @@ PopupActions =
 
   showDesignSettings: ->
     url = location.href
-    container = document.querySelector '[popup-design-settings-container]'
     user = CurrentUserStore.getUser()
 
-    unless container?
-      container = document.createElement 'div'
-      container.setAttribute 'popup-design-settings-container', ''
-      document.body.appendChild container
-
-    if url.indexOf(user.tlog_url) == -1
-      TastyConfirmController.show
-        message: i18n.t 'design_settings_page_confirm'
-        acceptButtonText: i18n.t 'design_settings_page_confirm_approve'
-        acceptButtonColor: 'green'
-        onAccept: ->
-          location.href = Routes.userDesignSettings user.slug
-    else
-      React.render <DesignSettingsPopup />, container
+    # if url.indexOf(user.tlog_url) == -1
+    #   TastyConfirmController.show
+    #     message: i18n.t 'design_settings_page_confirm'
+    #     acceptButtonText: i18n.t 'design_settings_page_confirm_approve'
+    #     acceptButtonColor: 'green'
+    #     onAccept: ->
+    #       location.href = Routes.userDesignSettings user.slug
+    # else
+    AppDispatcher.handleViewAction
+      type: Constants.popup.OPEN
+      component: DesignSettings
+      containerAttribute: 'design-settings-container'
 
   showFriends: (panelName, userId) ->
     container = document.querySelector '[popup-persons-container]'

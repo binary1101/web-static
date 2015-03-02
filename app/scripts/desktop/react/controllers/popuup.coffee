@@ -1,26 +1,38 @@
-#TODO: Этот контроллер будет слушать события на открытие и закрытие попапов.
+_         = require 'lodash'
+Constants = require '../constants/constants'
+Popup     = require '../components/popupComponent/popup'
 
 class PopupController
-  container: null
+  containerAttribute: 'popup-container'
 
-  constructor: ({@dispatcher, container}) ->
-    @container = container ? @getContainer()
+  constructor: ({@dispatcher}) ->
     @listenDispatcher()
 
-  getContainer: (containerSelector = 'popup-container') ->
-    container = document.querySelector "[#{containerSelector}]"
+  addContainer: (containerAttribute) ->
+    container = document.querySelector "[#{containerAttribute}]"
 
     unless container?
       container = document.createElement 'div'
-      container.setAttribute containerSelector, ''
+      container.setAttribute containerAttribute, ''
       document.body.appendChild container
 
     container
 
-  show: (reactClass, props, containerSelector) ->
-    container = @getContainer containerSelector
+  removeContainer: (container) ->
+    container.parentNode?.removeChild container
 
-    React.render <reactClass {...props} />, container
+  open: (Component, props, containerAttribute = @containerAttribute) ->
+    container = @addContainer containerAttribute
+
+    React.render <Popup onClose={ @handleClose.bind(@, containerAttribute) }>
+                   <Component {...props} />
+                 </Popup>, container
+
+  close: (containerAttribute = @containerAttribute) ->
+    container = document.querySelector "[#{containerAttribute}]"
+
+    React.unmountComponentAtNode container
+    @removeContainer container
 
   listenDispatcher: ->
     @dispatcher.register (payload) =>
@@ -28,8 +40,10 @@ class PopupController
 
       switch action.type
         when Constants.popup.OPEN
-          { reactClass, props, containerSelector } = action
+          { component, props, containerAttribute } = action
+          @open component, props, containerAttribute
 
-          @show reactClass, props, containerSelector
+  handleClose: (containerAttribute) ->
+    @close containerAttribute
 
 module.exports = PopupController

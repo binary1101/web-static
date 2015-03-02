@@ -4,7 +4,11 @@ Scroller = React.createClass
   displayName: 'Scroller'
 
   propTypes:
-    children: PropTypes.element.isRequired
+    children: PropTypes.oneOfType([
+      PropTypes.element
+      PropTypes.array
+    ]).isRequired
+    className: PropTypes.string
 
   componentDidMount: ->
     scroller = @getDOMNode()
@@ -21,13 +25,15 @@ Scroller = React.createClass
     @scroller = null
 
   render: ->
-    <div className="scroller scroller--dark">
-      <div className="scroller__pane">
-        { @props.children }
-      </div>
-      <div className="scroller__track">
-        <div className="scroller__bar" />
-      </div>
-    </div>
+    scrollerClasses = ["scroller", "scroller--dark", @props.className].join ' '
+
+    return <div className={ scrollerClasses }>
+             <div className="scroller__pane">
+               { @props.children }
+             </div>
+             <div className="scroller__track">
+               <div className="scroller__bar" />
+             </div>
+           </div>
 
 module.exports = Scroller

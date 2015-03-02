@@ -4,6 +4,7 @@ PopupActions           = require './actions/popup'
 AppDispatcher          = require './dispatchers/dispatcher'
 GuideController        = require './controllers/guide'
 LayoutStatesController = require './controllers/layoutStates'
+PopupController        = require './controllers/popuup'
 
 window.ReactApp =
 
@@ -50,6 +51,7 @@ window.ReactApp =
       Aviator.dispatch()
 
     @layoutStatesController = new LayoutStatesController(dispatcher: AppDispatcher)
+    @popupController = new PopupController(dispatcher: AppDispatcher)
 
     @shellbox = new ReactShellBox()
     @popup    = new ReactPopup()
