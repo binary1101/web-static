@@ -1,8 +1,8 @@
-DesignSettingsGroup        = require './Group'
-DesignSettingsOption       = require '../Option/index'
-DesignSettingsOptionState  = require '../Option/State'
-DesignSettingsOptionSlider = require '../Option/Slider'
-DesignSettingsRadioList    = require '../common/RadioList'
+DesignSettingsGroup       = require './Group'
+DesignSettingsOption      = require '../Option/index'
+DesignSettingsOptionState = require '../Option/State'
+DesignSettingsSlider      = require '../common/Slider'
+DesignSettingsRadioList   = require '../common/RadioList'
 { PropTypes } = React
 
 DesignSettingsHeaderGroup = React.createClass
@@ -19,12 +19,12 @@ DesignSettingsHeaderGroup = React.createClass
         <DesignSettingsOptionState
             style={ @props.group.font.style }
             text="Aa" />
-        <DesignSettingsOptionSlider>
+        <DesignSettingsSlider>
           <DesignSettingsRadioList
               style={ @props.group.font.style }
               stateName={ @props.group.font.stateName }              
               items={ @props.group.font.items } />
-        </DesignSettingsOptionSlider>
+        </DesignSettingsSlider>
       </DesignSettingsOption>
 
       <DesignSettingsOption

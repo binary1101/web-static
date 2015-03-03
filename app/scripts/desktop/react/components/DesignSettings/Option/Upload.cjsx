@@ -1,7 +1,7 @@
 { PropTypes } = React
 
-DesignSettingsFileUpload = React.createClass
-  displayName: 'DesignSettingsFileUpload'
+DesignSettingsOptionUpload = React.createClass
+  displayName: 'DesignSettingsOptionUpload'
 
   propTypes:
     stateName: PropTypes.string.isRequired
@@ -40,4 +40,4 @@ DesignSettingsFileUpload = React.createClass
       </span>
     </span>
 
-module.exports = DesignSettingsFileUpload
+module.exports = DesignSettingsOptionUpload

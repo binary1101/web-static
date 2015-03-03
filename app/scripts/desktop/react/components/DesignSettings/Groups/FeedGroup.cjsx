@@ -1,8 +1,9 @@
 DesignSettingsGroup        = require './Group'
 DesignSettingsOption       = require '../Option/index'
 DesignSettingsOptionState  = require '../Option/State'
-DesignSettingsOptionSlider = require '../Option/Slider'
+DesignSettingsSlider       = require '../common/Slider'
 DesignSettingsRadioList    = require '../common/RadioList'
+DesignSettingsRange        = require '../common/Range'
 { PropTypes } = React
 
 DesignSettingsFeedGroup = React.createClass
@@ -14,8 +15,8 @@ DesignSettingsFeedGroup = React.createClass
   render: ->
     <DesignSettingsGroup title="Лента">
       <DesignSettingsOption
-          name={ @props.group.bgcolor.optionName }
-          title="Цвет фона">
+          title="Цвет фона"
+          name={ @props.group.bgcolor.optionName }>
         <DesignSettingsOptionState style={ @props.group.bgcolor.itemStyle } />
         <DesignSettingsRadioList
             style={ @props.group.bgcolor.style }
@@ -25,17 +26,35 @@ DesignSettingsFeedGroup = React.createClass
       </DesignSettingsOption>
 
       <DesignSettingsOption
-          name={ @props.group.font.optionName }
-          title="Шрифт текста">
+          title="Шрифт текста"
+          name={ @props.group.font.optionName }>
         <DesignSettingsOptionState
             style={ @props.group.font.style }
             text="Aa" />
-        <DesignSettingsOptionSlider>
+        <DesignSettingsSlider>
           <DesignSettingsRadioList
               style={ @props.group.font.style }
               stateName={ @props.group.font.stateName }              
               items={ @props.group.font.items } />
-        </DesignSettingsOptionSlider>
+        </DesignSettingsSlider>
+      </DesignSettingsOption>
+
+      <DesignSettingsOption
+          title="Цвет текста"
+          name={ @props.group.color.optionName }>
+        <DesignSettingsOptionState style={ @props.group.color.itemStyle } />
+        <DesignSettingsRadioList
+            style={ @props.group.color.style }
+            stateName={ @props.group.color.stateName }              
+            items={ @props.group.color.items }
+            className="ds-absolute-left ds-fadein-down" />
+      </DesignSettingsOption>
+
+      <DesignSettingsOption
+          title="Прозрачность"
+          name={ @props.group.opacity.optionName }
+          free={ @props.group.opacity.free }>
+        <DesignSettingsRange value={ @props.group.opacity.value } />
       </DesignSettingsOption>
     </DesignSettingsGroup>
 

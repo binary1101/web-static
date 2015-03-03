@@ -1,8 +1,8 @@
 DesignSettingsGroup        = require './Group'
 DesignSettingsOption       = require '../Option/index'
 DesignSettingsOptionState  = require '../Option/State'
+DesignSettingsOptionUpload = require '../Option/Upload'
 DesignSettingsRadioList    = require '../common/RadioList'
-DesignSettingsFileUpload   = require '../common/FileUpload'
 { PropTypes } = React
 
 DesignSettingsBackgroundGroup = React.createClass
@@ -28,7 +28,7 @@ DesignSettingsBackgroundGroup = React.createClass
           name={ @props.group.image.optionName }
           title="Картинка"
           free={ @props.group.image.free }>
-        <DesignSettingsFileUpload
+        <DesignSettingsOptionUpload
             stateName={ @props.group.color.stateName }
             value={ @props.group.image.value }
             enabled={ @props.group.image.enabled } />

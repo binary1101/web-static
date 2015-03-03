@@ -369,5 +369,47 @@ DesignSettingsMixin =
               free: false
             }
           ]
+        color:
+          style: 'circlebtns'
+          itemStyle: 'circlebtn'
+          optionName: 'feedcolor'
+          stateName: 'designTlog-feedColor'
+          value: 'white'
+          items: [
+            {
+              value: 'white'
+              title: 'Белый'
+              text: 'Белый'
+              free: true
+            }
+            {
+              value: 'black'
+              title: 'Чёрный'
+              text: 'Чёрный'
+              free: true
+            }
+            {
+              value: 'silversand'
+              title: 'Серебряный песок'
+              text: 'Серебряный песок'
+              free: false
+            }
+            {
+              value: 'bluegray'
+              title: 'Серо-голубой'
+              text: 'Серо-голубой'
+              free: false
+            }
+            {
+              value: 'madison'
+              title: 'Мэдисон'
+              text: 'Мэдисон'
+              free: false
+            }
+          ]
+        opacity:
+          optionName: 'opacity'
+          value: .1
+          free: true
 
 module.exports = DesignSettingsMixin
