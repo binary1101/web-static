@@ -10,6 +10,7 @@ DesignSettingsHeaderGroup = React.createClass
 
   propTypes:
     group: PropTypes.object.isRequired
+    onOptionChange: PropTypes.func.isRequired
 
   render: ->
     <DesignSettingsGroup title="Заголовок">
@@ -23,7 +24,8 @@ DesignSettingsHeaderGroup = React.createClass
           <DesignSettingsRadioList
               style={ @props.group.font.style }
               stateName={ @props.group.font.stateName }              
-              items={ @props.group.font.items } />
+              items={ @props.group.font.items }
+              onChange={ @props.onOptionChange.bind(null, 'headerFont') } />
         </DesignSettingsSlider>
       </DesignSettingsOption>
 
@@ -34,7 +36,8 @@ DesignSettingsHeaderGroup = React.createClass
             style={ @props.group.size.style }
             stateName={ @props.group.size.stateName }              
             items={ @props.group.size.items }
-            className="ds-absolute-left ds-fadein-down" />
+            className="ds-absolute-left ds-fadein-down"
+            onChange={ @props.onOptionChange.bind(null, 'headerSize') } />
       </DesignSettingsOption>
 
       <DesignSettingsOption
@@ -45,7 +48,8 @@ DesignSettingsHeaderGroup = React.createClass
             style={ @props.group.color.style }
             stateName={ @props.group.color.stateName }              
             items={ @props.group.color.items }
-            className="ds-absolute-left ds-fadein-down" />
+            className="ds-absolute-left ds-fadein-down"
+            onChange={ @props.onOptionChange.bind(null, 'headerColor') } />
       </DesignSettingsOption>
     </DesignSettingsGroup>
 

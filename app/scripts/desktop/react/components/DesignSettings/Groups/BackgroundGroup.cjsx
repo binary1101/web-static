@@ -10,6 +10,8 @@ DesignSettingsBackgroundGroup = React.createClass
 
   propTypes:
     group: PropTypes.object.isRequired
+    onOptionChange: PropTypes.func.isRequired
+    onBackgroundVisibilityChange: PropTypes.func.isRequired
 
   render: ->
     <DesignSettingsGroup title="Фон">
@@ -21,7 +23,8 @@ DesignSettingsBackgroundGroup = React.createClass
             style={ @props.group.color.style }
             stateName={ @props.group.color.stateName }
             items={ @props.group.color.items }
-            className="ds-absolute-left ds-fadein-down" />
+            className="ds-absolute-left ds-fadein-down"
+            onChange={ @props.onOptionChange.bind(null, 'backgroundColor') } />
       </DesignSettingsOption>
 
       <DesignSettingsOption
@@ -31,7 +34,8 @@ DesignSettingsBackgroundGroup = React.createClass
         <DesignSettingsOptionUpload
             stateName={ @props.group.color.stateName }
             value={ @props.group.image.value }
-            enabled={ @props.group.image.enabled } />
+            enabled={ @props.group.image.enabled }
+            onVisibilityChange={ @props.onBackgroundVisibilityChange } />
       </DesignSettingsOption>
 
       <DesignSettingsOption
@@ -42,7 +46,8 @@ DesignSettingsBackgroundGroup = React.createClass
             style={ @props.group.alignment.style }
             stateName={ @props.group.alignment.stateName }              
             items={ @props.group.alignment.items }
-            className="ds-absolute-left ds-fadein-down" />
+            className="ds-absolute-left ds-fadein-down"
+            onChange={ @props.onOptionChange.bind(null, 'backgroundAlignment') } />
       </DesignSettingsOption>
     </DesignSettingsGroup>
 

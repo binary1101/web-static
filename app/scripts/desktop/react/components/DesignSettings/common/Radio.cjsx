@@ -9,6 +9,7 @@ DesignSettingsRadio = React.createClass
     title:     PropTypes.string.isRequired
     stateName: PropTypes.string.isRequired
     free:      PropTypes.bool
+    onChange:  PropTypes.func.isRequired
 
   render: ->
     <span className={ 'form-radiobtn form-radiobtn--' + @props.value }>
@@ -16,7 +17,8 @@ DesignSettingsRadio = React.createClass
              name={ @props.stateName }
              value={ @props.value }
              id={ @props.stateName + '-' + @props.value }
-             className="form-radiobtn__input" />
+             className="form-radiobtn__input"
+             onChange={ @handleChange } />
       <label htmlFor={ @props.stateName + '-' + @props.value }
              className="form-radiobtn__label">
         { @renderFreeLabel() }
@@ -34,5 +36,8 @@ DesignSettingsRadio = React.createClass
 
   renderFreeLabel: ->
     <span className="free">free</span> if @props.free
+
+  handleChange: ->
+    @props.onChange @props.value
 
 module.exports = DesignSettingsRadio

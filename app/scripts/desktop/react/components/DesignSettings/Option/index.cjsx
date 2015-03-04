@@ -8,9 +8,9 @@ DesignSettingsOption = React.createClass
       PropTypes.element
       PropTypes.array
     ]).isRequired
-    title:    PropTypes.string.isRequired
-    name:     PropTypes.string.isRequired
-    free:     PropTypes.bool
+    title: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired
+    free: PropTypes.bool
 
   render: ->
     <div className={ "design-settings__option design-settings__option--" + @props.name }>

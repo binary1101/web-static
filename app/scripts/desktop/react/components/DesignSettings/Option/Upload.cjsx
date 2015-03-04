@@ -5,8 +5,10 @@ DesignSettingsOptionUpload = React.createClass
 
   propTypes:
     stateName: PropTypes.string.isRequired
-    value:     PropTypes.string
-    enabled:   PropTypes.bool.isRequired
+    value: PropTypes.string
+    enabled: PropTypes.bool.isRequired
+    onUpload: PropTypes.func.isRequired
+    onVisibilityChange: PropTypes.func.isRequired
 
   render: ->
     <span>
@@ -18,7 +20,8 @@ DesignSettingsOptionUpload = React.createClass
           </span>
           <input type="file"
                  name={ @props.stateName }
-                 className="form-upload__input" />
+                 className="form-upload__input"
+                 onChange={ @handleChangeBackground } />
         </span>
       </span>
       <span className="design-settings__cover ds-absolute-right ds-fadeout-right"
@@ -29,7 +32,8 @@ DesignSettingsOptionUpload = React.createClass
                  name={ @props.stateName }
                  value="none"
                  id={ @props.stateName }
-                 className="form-checkbox__input" />
+                 className="form-checkbox__input"
+                 onChange={ @handleChangeVisibility } />
           <label htmlFor={ @props.stateName }
                  className="form-checkbox__label">
             <span className="form-checkbox__box">
@@ -39,5 +43,8 @@ DesignSettingsOptionUpload = React.createClass
         </span>
       </span>
     </span>
+
+  handleChangeVisibility: (e) ->
+    @props.onVisibilityChange !e.target.checked
 
 module.exports = DesignSettingsOptionUpload

@@ -11,6 +11,7 @@ DesignSettingsFeedGroup = React.createClass
 
   propTypes:
     group: PropTypes.object.isRequired
+    onOptionChange: PropTypes.func.isRequired
 
   render: ->
     <DesignSettingsGroup title="Лента">
@@ -22,7 +23,8 @@ DesignSettingsFeedGroup = React.createClass
             style={ @props.group.bgcolor.style }
             stateName={ @props.group.bgcolor.stateName }              
             items={ @props.group.bgcolor.items }
-            className="ds-absolute-left ds-fadein-down" />
+            className="ds-absolute-left ds-fadein-down"
+            onChange={ @props.onOptionChange.bind(null, 'feedBackgroundColor') } />
       </DesignSettingsOption>
 
       <DesignSettingsOption
@@ -35,7 +37,8 @@ DesignSettingsFeedGroup = React.createClass
           <DesignSettingsRadioList
               style={ @props.group.font.style }
               stateName={ @props.group.font.stateName }              
-              items={ @props.group.font.items } />
+              items={ @props.group.font.items }
+              onChange={ @props.onOptionChange.bind(null, 'feedFont') } />
         </DesignSettingsSlider>
       </DesignSettingsOption>
 
@@ -47,7 +50,8 @@ DesignSettingsFeedGroup = React.createClass
             style={ @props.group.color.style }
             stateName={ @props.group.color.stateName }              
             items={ @props.group.color.items }
-            className="ds-absolute-left ds-fadein-down" />
+            className="ds-absolute-left ds-fadein-down"
+            onChange={ @props.onOptionChange.bind(null, 'feedColor') } />
       </DesignSettingsOption>
 
       <DesignSettingsOption

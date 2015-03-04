@@ -1,9 +1,19 @@
+_ = require 'lodash'
 Constants = require '../constants/constants'
 
 class LayoutStatesController
   layoutEl: null
   states:
-    userToolbar: 'main-toolbar-open'
+    userToolbar:         'main-toolbar-open'
+    headerFont:          'designtlog-headerfont'
+    headerSize:          'designtlog-headersize'
+    headerColor:         'designtlog-headercolor'
+    backgroundColor:     'designtlog-bgcolor'
+    backgroundImage:     'designtlog-bgimage-none'
+    backgroundAlignment: 'designtlog-bgalignment'
+    feedBackgroundColor: 'designtlog-feedbgcolor'
+    feedFont:            'designtlog-feedfont'
+    feedColor:           'designtlog-feedcolor'
 
   constructor: ({@dispatcher, layoutEl}) ->
     @layoutEl = layoutEl ? document.body
@@ -19,6 +29,15 @@ class LayoutStatesController
 
     @layoutEl.classList[methodName] stateName
 
+  replaceState: (UIelement, value) ->
+    stateName = @states[UIelement] # 'designtlog-headerfont'
+    classes = @layoutEl.className.split(' ').filter (className) ->
+      className.lastIndexOf(stateName, 0) != 0
+
+    newClass = stateName + '-' + value
+    classes.push newClass
+    @layoutEl.className = _.trim classes.join(' ')
+
   listenDispatcher: ->
     @dispatcher.register (payload) =>
       action = payload.action
@@ -26,5 +45,11 @@ class LayoutStatesController
       switch action.type
         when Constants.userToolbar.INIT_VISIBILITY, Constants.userToolbar.TOGGLE_VISIBILITY
           @toggleState 'userToolbar', action.value
+
+        when Constants.designSettings.SET_OPTION
+          @replaceState action.optionName, action.value
+
+        when Constants.designSettings.TOGGLE_BACKGROUND_VISIBILITY
+          @toggleState 'backgroundImage', action.value
 
 module.exports = LayoutStatesController
