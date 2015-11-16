@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title></title>
+
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+
+        <link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" />
+
+        <!-- Fonts -->
+        <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,700italic,400italic,700&amp;subset=latin,cyrillic" />
+        <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,700italic,400italic,700&amp;subset=latin,cyrillic" />
+        <!-- end Fonts -->
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="stylesheets/main.css" />
+        <!-- end Styles -->
+
+        <!-- Scripts -->
+        <script src="scripts/shared/modernizr.js"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/pusher/dist/pusher.js"></script>
+        <script src="javascripts/old/libs/jquery/jquery.ui.core.min.js"></script>
+        <script src="javascripts/old/libs/jquery/jquery.ui.widget.min.js"></script>
+        <script src="javascripts/old/libs/jquery/jquery.ui.mouse.min.js"></script>
+        <script src="javascripts/old/libs/jquery/jquery.ui.draggable.min.js"></script>
+        <script src="javascripts/old/libs/jquery/jquery.ui.effect.min.js"></script>
+        <script src="javascripts/old/libs/jquery/jquery.ui.effect-slide.min.js"></script>
+        <script src="javascripts/old/libs/jquery.autosize.min.js"></script>
+        <script src="javascripts/old/libs/jquery.caretposition.js"></script>
+        <script src="javascripts/old/libs/jquery.sew.js"></script>
+        <script src="javascripts/old/libs/jquery.timeago.js"></script>
+        <script src="javascripts/old/libs/jquery.timeago.ru.js"></script>
+        <script src="javascripts/old/libs/jsrender.min.js"></script>
+        <script src="javascripts/old/libs/uploaderObject.js"></script>
+        <script src="javascripts/old/libs/cookie.js"></script>
+        <script src="javascripts/old/libs/baron.js"></script>
+        <script src="javascripts/old/libs/jquery.custom-select.js"></script>
+        <script src="javascripts/old/plugins/jquery.collage.js"></script>
+        <script src="javascripts/old/libs/jquery.mousewheel.js"></script>
+        <script src="javascripts/old/libs/jquery.fancybox.pack.js"></script>
+        <script src="javascripts/old/libs/jquery.autosize.input.js"></script>
+        <script src="javascripts/old/libs/jquery.plugin.js"></script>
+        <script src="javascripts/old/libs/jquery.maxlength.js"></script>
+
+        <script src="javascripts/old/plugins/jquery.formradio.js"></script>
+        <script src="javascripts/old/plugins/jquery.dropdown.js"></script>
+        <script src="javascripts/old/plugins/jquery.expander.js"></script>
+        <script src="javascripts/old/plugins/jquery.togglevalue.js"></script>
+
+        <!-- end Scripts -->
+    </head>
+    <body class="layout--feed not-logged">
+        <!-- Toolbar - Experiment -->
+        <div class="toolbar toolbar--main">
+            <div class="toolbar__toggle" data-element="dropdown-toggle">
+                <i class="icon icon--menu"></i>
+            </div>
+            <div class="toolbar__popup">
+                <div class="scroller scroller--dark">
+                    <div class="scroller__pane">
+                        <ul class="toolbar__popup-list">
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Новая&nbsp;запись" data-placement="right" data-container="body" tooltip><i class="icon icon--plus"></i><span class="toolbar__popup-text">Новая запись</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Мой&nbsp;дневник" data-placement="right" data-container="body" tooltip><i class="icon icon--diary"></i><span class="toolbar__popup-text">Мой дневник</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Подписки" data-placement="right" data-container="body" tooltip><i class="icon icon--friends"></i><span class="toolbar__popup-text">Подписки</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Прямой эфир" data-placement="right" data-container="body" tooltip><i class="icon icon--wave"></i><span class="toolbar__popup-text">Прямой эфир</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Лучшее" data-placement="right" data-container="body" tooltip><i class="icon icon--rating"></i><span class="toolbar__popup-text">Лучшее</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Анонимки" data-placement="right" data-container="body" tooltip><i class="icon icon--anonymous"></i><span class="toolbar__popup-text">Анонимки</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Люди" data-placement="right" data-container="body" tooltip><i class="icon icon--people"></i><span class="toolbar__popup-text">Люди</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Профиль" data-placement="right" data-container="body" tooltip><i class="icon icon--profile"></i><span class="toolbar__popup-text">Профиль</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Избранное" data-placement="right" data-container="body" tooltip><i class="icon icon--star"></i><span class="toolbar__popup-text">Избранное</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Скрытые&nbsp;записи" data-placement="right" data-container="body" tooltip><i class="icon icon--lock"></i><span class="toolbar__popup-text">Скрытые записи</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Сообщения" data-placement="right" data-container="body" tooltip><i class="icon icon--messages"></i><span class="toolbar__popup-text">Сообщения</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Друзья" data-placement="right" data-container="body" tooltip><i class="icon icon--friends"></i><span class="toolbar__popup-text">Друзья</span></a>
+                            </li>
+                            <li class="toolbar__popup-item">
+                                <a class="toolbar__popup-link" href="#" data-original-title="Дизайн&nbsp;дневника" data-placement="right" data-container="body" tooltip><i class="icon icon--drawing"></i><span class="toolbar__popup-text">Дизайн дневника</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="scroller__track">
+                        <div class="scroller__bar"></div>
+                    </div>
+                </div>
+                <ul class="toolbar__popup-list toolbar__popup-list--bottom">
+                    <li class="toolbar__popup-item">
+                        <a class="toolbar__popup-link" href="#" data-original-title="Настройки" data-placement="right" data-container="body" tooltip><i class="icon icon--cogwheel"></i><span class="toolbar__popup-text">Настройки</span></a>
+                    </li>
+                    <li class="toolbar__popup-item">
+                        <a class="toolbar__popup-link" href="#" data-original-title="Выйти" data-placement="right" data-container="body" tooltip><i class="icon icon--logout"></i><span class="toolbar__popup-text">Выйти</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end Toolbar - Experiment -->
+
+        <!-- Toolbar - Compose -->
+        <div class="toolbar toolbar--compose">
+            <div class="toolbar__toggle" data-original-title="Новый пост" data-placement="left" tooltip>
+                <i class="icon icon--plus"></i>
+            </div>
+            <div class="toolbar__drops">
+                <div class="toolbar__drop">
+                    <a class="button button--circle button--emerald" href="#" data-original-title="Текст в дневник" data-placement="left" tooltip>
+                        <i class="icon icon--text-circle"></i>
+                    </a>
+                </div>
+                <div class="toolbar__drop">
+                    <a class="button button--circle button--emerald" href="#" data-original-title="Картинка в дневник" data-placement="left" tooltip>
+                        <i class="icon icon--image-circle"></i>
+                    </a>
+                </div>
+                <div class="toolbar__drop">
+                    <a class="button button--circle button--emerald" href="#" data-original-title="Анонимка" data-placement="left" tooltip>
+                        <i class="icon icon--question-mark"></i>
+                    </a>
+                </div>
+                <div class="toolbar__drop">
+                    <a class="button button--circle button--emerald" href="#" data-original-title="Создать поток" data-placement="left" tooltip>
+                        <i class="icon icon--hash"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end Toolbar - Compose -->
+
+        <script>
+            var toolbarCompose = document.querySelector('.toolbar--compose')
+
+            console.log(toolbarCompose)
+
+            toolbarCompose.onmouseenter = function(){
+                toolbarCompose.classList.add('state--open');
+            }
+
+            toolbarCompose.onmouseleave = function(){
+                toolbarCompose.classList.remove('state--open');
+            }
+        </script>
+
+        <!-- Page -->
+        <div class="page js-preview-design">
+            <div class="page__inner">
+                <div class="page__paper">
+                    <!-- Page Header -->
+                    <header class="page-header">
+                        <!-- Search -->
+                            <div data-react-class="Search" data-react-props='
+                                {
+                                    "query": "My awesome query"
+                                }'>
+                            </div>
+                        <!-- end Search -->
+                        <!-- Hero -->
+                        <div class="hero hero--cover" style="background-image: url(images/hero-cover.jpg);">
+                            <div class="hero__overlay"></div>
+                            <div class="hero__box">
+                                <div class="hero__slide">
+                                    <div class="hero__head">
+                                        <div class="hero__title">
+                                            <span>Люди</span>
+                                        </div>
+                                    </div>
+                                    <div class="hero__text"><span>25 758 зарегистрированы на тейсти</span></div>
+                                </div>
+                                <div class="hero__slide">
+                                    <div class="hero__head">
+                                        <div class="hero__title">
+                                            <span>Прямой эфир</span>
+                                        </div>
+                                    </div>
+                                    <div class="hero__text"><span>25 758 людей пишут в прямой эфир</span></div>
+                                </div>
+                                <div class="hero__slide">
+                                    <div class="hero__head">
+                                        <div class="hero__title">
+                                            <span>Лучшее</span>
+                                        </div>
+                                    </div>
+                                    <div class="hero__text"><span>25 758 людей попали в лучшее</span></div>
+                                </div>
+                                <div class="hero__slide">
+                                    <div class="hero__head">
+                                        <div class="hero__title">
+                                            <span>Анонимки</span>
+                                        </div>
+                                    </div>
+                                    <div class="hero__text"><span>25 людей пишут анонимки</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end Hero -->
+                    </header>
+                    <!-- end Page Header -->
+                    <!-- Page Body -->
+                    <div class="page-body">
+                        <div class="layout-outer">
+                            <!-- Filter Nav -->
+                            <nav class="filter-nav">
+                                <ul class="filter-nav__list">
+                                    <li class="filter-nav__item state--active">
+                                        <a class="filter-nav__link" href="#" title="Больше всего пишут">Больше всего пишут</a>
+                                    </li><li class="filter-nav__item">
+                                        <a class="filter-nav__link" href="#" title="Новые">Новые</a>
+                                    </li><li class="filter-nav__item">
+                                        <a class="filter-nav__link" href="#" title="Много комментируют">Много комментируют</a>
+                                    </li><li class="filter-nav__item">
+                                        <a class="filter-nav__link" href="#" title="Интересные">Интересные</a>
+                                    </li><li class="filter-nav__item">
+                                        <a class="filter-nav__link" href="#" title="Плохо себя вели">Плохо себя вели</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- end Filter Nav -->
+                            <!-- People -->
+                            <section class="people">
+                                <span data-react-class="PeopleItem" data-react-props='
+                                {
+                                    "user": {
+                                        "id":58772,
+                                        "name":"Berencev",
+                                        "slug":"Berencev",
+                                        "title":"Оставь надежду всяк сюда входящий.",
+                                        "is_female":false,
+                                        "is_daylog":false,
+                                        "tlog_url":"http://taaasty.ru/@Berencev",
+                                        "created_at":"2011-07-11T17:35:07.000+04:00",
+                                        "updated_at":"2014-08-17T12:13:35.000+04:00",
+                                        "total_entries_count":13332,
+                                        "private_entries_count":30,
+                                        "public_entries_count":13288,
+                                        "is_privacy":false,
+                                        "userpic":{
+                                            "original_url":"http://taaasty.ru/assets/userpic/2e/a7/58772_original.jpg",
+                                            "large_url":"http://taaasty.ru/assets/userpic/2e/a7/58772_large.jpg",
+                                            "thumb128_url":"http://taaasty.ru/assets/userpic/2e/a7/58772_thumb128.jpg",
+                                            "thumb64_url":"http://taaasty.ru/assets/userpic/2e/a7/58772_thumb64.jpg",
+                                            "thumbor_path":"userpic/2e/a7/58772_thumb64.jpg",
+                                            "default_colors":{
+                                                "background":"#ffca00",
+                                                "name":"#222222"
+                                            }
+                                        }
+                                    },
+                                    "title": "<a href=\"http://vkontakte.ru/id109507660\" target=\"_blank\" rel=\"nofollow\">http://vkontakte.ru/id109507660</a>",
+                                    "relationship":{
+                                        "id":null,
+                                        "user_id":58772,
+                                        "reader_id":232992,
+                                        "position":null,
+                                        "state":"none"
+                                    }
+                                }'></span>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_10.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_10.png" alt="still-got-tonight" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">still-got-tonight</h3>
+                                        </a>
+                                    </div>
+                                </article>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_9.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_9.png" alt="tuylenparanoik" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">tuylenparanoik</h3>
+                                            <p class="people-item__desc">Все началось тогда, когда белая медведица повстречала бурую</p>
+                                        </a>
+                                    </div>
+                                </article>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_8.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_8.png" alt="alkogolYana" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">alkogolYana</h3>
+                                            <p class="people-item__desc">Вечнохудеющий алкоголик, ищущий того единственного, но "закоренелый холостяк"</p>
+                                        </a>
+                                    </div>
+                                </article>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_10.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_10.png" alt="still-got-tonight" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">still-got-tonight</h3>
+                                        </a>
+                                    </div>
+                                </article>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_9.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_9.png" alt="tuylenparanoik" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">tuylenparanoik</h3>
+                                            <p class="people-item__desc">Все началось тогда, когда белая медведица повстречала бурую</p>
+                                        </a>
+                                    </div>
+                                </article>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_8.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_8.png" alt="alkogolYana" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">alkogolYana</h3>
+                                            <p class="people-item__desc">Вечнохудеющий алкоголик, ищущий того единственного, но "закоренелый холостяк"</p>
+                                        </a>
+                                    </div>
+                                </article>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_10.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_10.png" alt="still-got-tonight" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">still-got-tonight</h3>
+                                        </a>
+                                    </div>
+                                </article>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_9.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_9.png" alt="tuylenparanoik" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">tuylenparanoik</h3>
+                                            <p class="people-item__desc">Все началось тогда, когда белая медведица повстречала бурую</p>
+                                        </a>
+                                    </div>
+                                </article>
+                                <article class="people-item">
+                                    <div class="people-item__inner">
+                                        <a class="people-item__link" href="#">
+                                            <div class="people-item__avatar">
+                                                <span class="avatar" style="background-image: url(images/avatars/ava_8.png);">
+                                                    <img class="avatar__img" src="images/avatars/ava_8.png" alt="alkogolYana" />
+                                                </span>
+                                            </div>
+                                            <h3 class="people-item__name">alkogolYana</h3>
+                                            <p class="people-item__desc">Вечнохудеющий алкоголик, ищущий того единственного, но "закоренелый холостяк"</p>
+                                        </a>
+                                    </div>
+                                </article>
+                            </section>
+                            <!-- end People -->
+                            <div class="page-loader state--hidden js-page-loader">
+                                <span class="spinner spinner--24x24"><span class="spinner__icon"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Page Body -->
+                </div>
+            </div>
+        </div>
+        <!-- end Page -->
+
+        <script src="scripts/vendor.js"></script>
+        <script src="scripts/client.js"></script>
+    </body>
+</html>
