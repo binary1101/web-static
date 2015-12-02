@@ -1,14 +1,17 @@
 /*global i18n */
 import React, { Component, PropTypes } from 'react';
 import UserOnboardingList from './UserOnboardingList';
-import UserOnboardingMoreButton from './UserOnboardingMoreButton';
+import UserOnboardingContinueButton from './UserOnboardingMoreButton';
 import UserOnboardingStore from '../../stores/UserOnboardingStore';
 import * as UserOnboardingActions from '../../actions/UserOnboardingActions';
 
-const RELS_PER_PAGE = 6;
+const SUBSCRIBE_LIMIT = 5;
 
 class UserOnboarding extends Component {
-  state = Object.assign({}, this.getStoreState(), { page: 0 })
+  state = Object.assign(
+    {},
+    this.getStoreState(),
+    { subscribed: 0 })
   componentWillMount() {
     const { isLoading, relationships: rels } = this.state;
     this.sync = this._syncWithStore.bind(this);
@@ -26,26 +29,25 @@ class UserOnboarding extends Component {
   _syncWithStore() {
     this.setState(this.getStoreState());
   }
-  showMore() {
-    this.setState({ page: this.state.page + 1 });
-  }
   render() {
-    const { isLoading, page, relationships } = this.state;
-    const relationshipsPage = relationships.slice(0, (page + 1) * RELS_PER_PAGE);
-    const hasMore = (page + 1) * RELS_PER_PAGE < relationships.length;
+    const { isLoading, relationships } = this.state;
+    const subscribed = 0;
+    const enough = subscribed >= SUBSCRIBE_LIMIT;
 
     return (
       <div className="user-onboarding">
-        <div className="user-onboarding__header">
-          {i18n.t('user_onboarding_header')}
-        </div>
+        {!enough &&
+         <div className="user-onboarding__header">
+           {i18n.t('user_onboarding_header', { left: SUBSCRIBE_LIMIT - subscribed })}
+         </div>
+        }
         <div className="user-onboarding__body">
           <UserOnboardingList
-            hasMore={hasMore}
+            enough={enough}
             isLoading={isLoading}
-            relationships={relationshipsPage}
+            relationships={relationships}
           />
-          {hasMore && <UserOnboardingMoreButton isLoading={isLoading} showMore={this.showMore.bind(this)} />}
+          {enough && <UserOnboardingContinueButton continue={() => {}} />}
         </div>
       </div>
     );

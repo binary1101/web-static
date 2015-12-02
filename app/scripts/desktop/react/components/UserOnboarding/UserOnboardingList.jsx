@@ -7,10 +7,10 @@ import Scroller from '../common/scroller/scroller';
 
 class UserOnboardingList {
   render() {
-    const { hasMore, isLoading, relationships: rels } = this.props;
+    const { enough, isLoading, relationships: rels } = this.props;
     const containerClasses = classNames({
       'user-onboarding__list': true,
-      '--has-more': hasMore,
+      '--has-more': enough,
     });
 
     return (
